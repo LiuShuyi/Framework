@@ -12,7 +12,7 @@ namespace Framework.Test.UnitTesting.Framework.Data.SqlServer
     public class SqlServerDataCommandTest
     {
         [Test]
-        public void 数据库测试()
+        public void 数据库测试ExecuteReader()
         {
             var userList = new List<String>();
 

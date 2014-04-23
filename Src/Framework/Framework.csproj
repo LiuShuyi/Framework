@@ -56,7 +56,6 @@
     <Compile Include="Contract\Model\Data\ConnectionTypeConfig.cs" />
     <Compile Include="Contract\Model\Data\ParametersConfig.cs" />
     <Compile Include="Contract\Model\Data\ParmConfig.cs" />
-    <Compile Include="Contract\Model\Enum\LogType.cs" />
     <Compile Include="Log\TextLog\TextLogProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

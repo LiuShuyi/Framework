@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Framework.Log.TextLog;
+using NUnit.Framework;
 using frameworkLib = Framework;
 
 namespace Framework.Test.UnitTesting.Framework.Log.TextLogProvider
@@ -10,7 +11,7 @@ namespace Framework.Test.UnitTesting.Framework.Log.TextLogProvider
     /// <summary>
     /// Framework.Log.TextLogProvider.FrameworkTextLog 单元测试
     /// </summary>
-    [NUnit.Framework.TestFixture]
+    [TestFixture]
     public class FrameworkTextLogTest
     {
         [NUnit.Framework.Test]

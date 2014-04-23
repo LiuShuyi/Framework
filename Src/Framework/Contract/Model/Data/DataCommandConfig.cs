@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 
 namespace Framework.Contract.Model.Data
 {
+    [Config(FilePath = @"\Configs\Data", Extensions = "config")]
     public class DataCommandConfig
     {
         /// <summary>

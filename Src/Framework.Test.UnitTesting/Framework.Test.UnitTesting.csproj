@@ -49,8 +49,7 @@
   <ItemGroup>
     <Compile Include="Framework\Caching\HttpRuntimeCacheProviderTest.cs" />
     <Compile Include="Framework\Configuration\ConfigManagerTest.cs" />
-    <Compile Include="Framework\Data\SqlDataCommandManagerTest.cs" />
-    <Compile Include="Framework\Data\SqlServer\SqlServerDataCommandTest.cs" />
+    <Compile Include="Framework.Data\SqlServer\SqlServerDataCommandTest.cs" />
     <Compile Include="Framework\Log\TextLogProvider\FrameworkTextLogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,7 +68,7 @@
     <None Include="Configs\ConnectionString.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Configs\Data\DataCommand_LocalTest.config">
+    <None Include="Configs\Data\DataCommand_LocalhostTest.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Log4Net.config">
