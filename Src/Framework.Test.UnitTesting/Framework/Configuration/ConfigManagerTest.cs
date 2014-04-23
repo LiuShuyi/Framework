@@ -25,6 +25,8 @@ namespace Framework.Test.UnitTesting.Framework.Configuration
 
             var connectionStringsConfig2 = connectionStringsConfig.Connection.Find(config => config.Name.Equals("UnintTesting2"));
 
+            #region DataOperations Assert
+
             Assert.IsNotNull(dataOperationsConfig1);
 
             Assert.AreEqual(dataOperationsConfig1.Name, "UnintTesting1");
@@ -51,17 +53,25 @@ namespace Framework.Test.UnitTesting.Framework.Configuration
             Assert.AreEqual(dataOperationsConfig2.Parameters.Parm[1].DbType, "Int");
             Assert.AreEqual(dataOperationsConfig2.Parameters.Parm[1].Size, 0);
 
-            Assert.IsNotNull(connectionStringsConfig);
+            #endregion
+
+            #region ConnectionStrings Assert
+
+            Assert.IsNotNull(connectionStringsConfig1);
 
             Assert.AreEqual(connectionStringsConfig1.Name, "UnintTesting1");
             Assert.AreEqual(connectionStringsConfig1.RetryTimes, 3);
             Assert.AreEqual(connectionStringsConfig1.ConnectionType.Name, "Transaction");
             Assert.AreEqual(connectionStringsConfig1.ConnectionType.ConnectionString.Trim(), "Data Source=UnintTesting1");
-            
+
+            Assert.IsNotNull(connectionStringsConfig2);
+
             Assert.AreEqual(connectionStringsConfig2.Name, "UnintTesting2");
             Assert.AreEqual(connectionStringsConfig2.RetryTimes, 3);
             Assert.AreEqual(connectionStringsConfig2.ConnectionType.Name, "Transaction");
             Assert.AreEqual(connectionStringsConfig2.ConnectionType.ConnectionString.Trim(), "Data Source=UnintTesting2");
+
+            #endregion
         }
     }
 }
