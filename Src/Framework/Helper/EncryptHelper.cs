@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Yintai.Service.Payment.TradeQuery.Util.Helper
+namespace Framework.Helper
 {
     public static class EncrypHelper
     {

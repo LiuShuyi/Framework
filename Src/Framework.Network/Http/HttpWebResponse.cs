@@ -6,12 +6,12 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Yintai.Service.Payment.TradeQuery.Util.Helper
+namespace Framework.Network.Http
 {
     /// <summary>  
     /// 有关HTTP请求的辅助类  
     /// </summary>  
-    public static class HttpWebResponseHelper
+    public static class HttpWebResponse
     {
         private const String DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
 

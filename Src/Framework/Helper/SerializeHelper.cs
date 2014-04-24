@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Script.Serialization;
 
-namespace Yintai.Service.Payment.TradeQuery.Util.Helper
+namespace Framework.Helper
 {
     /// <summary>
     /// 序列化Helper
