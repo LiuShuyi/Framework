@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Framework.Contract.Model.Data
+namespace Framework.Base.Contract.Model.Data
 {
     /// <summary>
     /// ParametersConfig

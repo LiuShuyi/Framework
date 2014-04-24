@@ -1,9 +1,9 @@
-﻿using Framework.Contract;
+﻿using System;
+using Framework.Base.Contract;
 using log4net;
-using System;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "Log4Net.config", Watch = true)]
-namespace Framework.Log.TextLog
+namespace Framework.Base.Log.TextLog
 {
     /// <summary>
     /// Text Log

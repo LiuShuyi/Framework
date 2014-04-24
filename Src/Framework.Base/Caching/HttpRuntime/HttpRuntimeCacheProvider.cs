@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Framework.Base.Contract;
+using System;
 using System.Collections.Generic;
-using Framework.Contract;
 
-namespace Framework.Caching.HttpRuntime
+namespace Framework.Base.Caching.HttpRuntime
 {
     /// <summary>
     /// HttpRuntime.Cache Provider

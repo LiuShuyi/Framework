@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using Framework.Contract.Model;
+using Framework.Base.Contract.Model;
 using System;
 
 namespace Framework.Data.SqlServer

@@ -1,5 +1,5 @@
-﻿using Framework.Configuration;
-using Framework.Contract.Model.Data;
+﻿using Framework.Base.Configuration;
+using Framework.Base.Contract.Model.Data;
 using System;
 using System.Collections.Generic;
 

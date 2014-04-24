@@ -1,11 +1,11 @@
-﻿using Framework.Contract.Model;
+﻿using Framework.Base.Contract.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace Framework.Configuration
+namespace Framework.Base.Configuration
 {
     /// <summary>
     /// Config Manager

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.Contract
+namespace Framework.Base.Contract
 {
     /// <summary>
     /// I Log

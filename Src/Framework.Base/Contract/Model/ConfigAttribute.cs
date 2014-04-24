@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.Contract.Model
+namespace Framework.Base.Contract.Model
 {
     /// <summary>
     /// DataOperationsFilePath Attribute

@@ -54,13 +54,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework.Base\Framework.Base.csproj">
+      <Project>{1389368a-5f8a-4f56-aa2f-3c7fcfd4bf18}</Project>
+      <Name>Framework.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Data\Framework.Data.csproj">
       <Project>{a26d9e33-09c6-4545-b366-1b5dce465c1c}</Project>
       <Name>Framework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Framework\Framework.csproj">
-      <Project>{1389368a-5f8a-4f56-aa2f-3c7fcfd4bf18}</Project>
-      <Name>Framework</Name>
+    <ProjectReference Include="..\Framework.Network\Framework.Network.csproj">
+      <Project>{04ee4299-6138-44b0-8495-a8e45ee78598}</Project>
+      <Name>Framework.Network</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

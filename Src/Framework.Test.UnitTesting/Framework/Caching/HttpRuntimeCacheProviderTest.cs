@@ -1,4 +1,4 @@
-﻿using Framework.Caching.HttpRuntime;
+﻿using Framework.Base.Caching.HttpRuntime;
 using NUnit.Framework;
 
 namespace Framework.Test.UnitTesting.Framework.Caching

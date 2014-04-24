@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace Framework.Contract.Model.Data
+namespace Framework.Base.Contract.Model.Data
 {
     /// <summary>
     /// DataOperations

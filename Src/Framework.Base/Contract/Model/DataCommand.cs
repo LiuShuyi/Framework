@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Framework.Contract.Model
+namespace Framework.Base.Contract.Model
 {
     public class DataCommand : IDisposable
     {

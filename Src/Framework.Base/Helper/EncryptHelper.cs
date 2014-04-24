@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Framework.Helper
+namespace Framework.Base.Helper
 {
     public static class EncrypHelper
     {

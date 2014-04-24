@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace Framework.Contract.Model.Data
+namespace Framework.Base.Contract.Model.Data
 {
     /// <summary>
-    /// Connection
+    /// ParmConfig
     /// </summary>
-    public class ConnectionConfig
+    public class ParmConfig
     {
         /// <summary>
-        /// Name
+        /// Parm Name
         /// </summary>
         [XmlAttribute]
         public String Name { get; set; }
 
         /// <summary>
-        /// RetryTimes
-        /// </summary>
-        [XmlAttribute]
-        public Int32 RetryTimes { get; set; }
-
-        /// <summary>
         /// DbType
         /// </summary>
-        [XmlElement]
-        public ConnectionTypeConfig ConnectionType { get; set; }
+        [XmlAttribute]
+        public String DbType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlAttribute]
+        public Int32 Size { get; set; }
     }
 }

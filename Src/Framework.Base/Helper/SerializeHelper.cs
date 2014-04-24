@@ -1,7 +1,7 @@
 using System;
 using System.Web.Script.Serialization;
 
-namespace Framework.Helper
+namespace Framework.Base.Helper
 {
     /// <summary>
     /// 序列化Helper
