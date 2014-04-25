@@ -1,7 +1,7 @@
 ﻿using Framework.Base.Caching.HttpRuntime;
 using NUnit.Framework;
 
-namespace Framework.Test.UnitTesting.Framework.Caching
+namespace Framework.Test.UnitTesting.Framework.Base.Caching
 {
     /// <summary>
     /// Framework.Caching.AspNetCacheProvider 单元测试

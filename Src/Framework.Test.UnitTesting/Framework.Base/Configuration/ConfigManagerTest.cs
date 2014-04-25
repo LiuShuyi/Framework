@@ -2,7 +2,7 @@
 using Framework.Base.Contract.Model.Data;
 using NUnit.Framework;
 
-namespace Framework.Test.UnitTesting.Framework.Configuration
+namespace Framework.Test.UnitTesting.Framework.Base.Configuration
 {
     /// <summary>
     /// Framework.Configuration.ConfigManager 单元测试

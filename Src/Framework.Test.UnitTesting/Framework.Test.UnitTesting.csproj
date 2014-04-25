@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\Caching\HttpRuntimeCacheProviderTest.cs" />
-    <Compile Include="Framework\Configuration\ConfigManagerTest.cs" />
+    <Compile Include="Framework.Base\Caching\HttpRuntimeCacheProviderTest.cs" />
+    <Compile Include="Framework.Base\Configuration\ConfigManagerTest.cs" />
     <Compile Include="Framework.Data\SqlServer\SqlServerDataCommandTest.cs" />
-    <Compile Include="Framework\Log\TextLogProvider\FrameworkTextLogTest.cs" />
+    <Compile Include="Framework.Base\Log\FrameworkTextLogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
