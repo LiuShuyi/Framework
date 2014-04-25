@@ -39,7 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Http\HttpContextAnalysis.cs" />
+    <Compile Include="Http\HttpRequestInfo.cs" />
+    <Compile Include="Http\HttpResponseInfo.cs" />
     <Compile Include="Http\HttpWebResponse.cs" />
+    <Compile Include="Http\IHttpRequestProcessing.cs" />
+    <Compile Include="Http\SmartHttpService.cs" />
+    <Compile Include="NetworkHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
