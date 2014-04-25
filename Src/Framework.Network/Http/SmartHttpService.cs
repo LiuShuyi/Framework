@@ -14,10 +14,13 @@ namespace Framework.Network.Http
         /// .ctor
         /// </summary>
         /// <param name="ipEndPoint"></param>
+        /// <param name="encoding"></param>
         /// <param name="socketBacklogLength"></param>
-        public SmartHttpService(EndPoint ipEndPoint, Int32 socketBacklogLength = 1000)
+        public SmartHttpService(EndPoint ipEndPoint, Encoding encoding, Int32 socketBacklogLength = 1000)
         {
             this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            this.encoding = encoding;
 
             this.socketBacklogLength = socketBacklogLength;
 
@@ -30,6 +33,11 @@ namespace Framework.Network.Http
         /// Socket
         /// </summary>
         private Socket socket;
+
+        /// <summary>
+        /// Encoding
+        /// </summary>
+        private Encoding encoding;
 
         /// <summary>
         /// Socket Backlog Length
@@ -72,7 +80,7 @@ namespace Framework.Network.Http
 
             var receiveLength = receivePackage.Client.EndReceive(result);
 
-            var request = Encoding.UTF8.GetString(receivePackage.Buffer, 0, receiveLength);
+            var request = encoding.GetString(receivePackage.Buffer, 0, receiveLength);
 
             var httpProcessingDelegate = HttpProcessingDelegate;
 
@@ -101,7 +109,7 @@ namespace Framework.Network.Http
 
             var httpResponse = package.HttpProcessingDelegate.EndInvoke(result);
 
-            var response = Encoding.UTF8.GetBytes(httpResponse.ResponseContent);
+            var response = encoding.GetBytes(httpResponse.ResponseContent);
 
             package.Client.BeginSend(response, 0, response.Length, SocketFlags.None, SendResponse, package.Client);
         }
