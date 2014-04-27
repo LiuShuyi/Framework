@@ -3,8 +3,14 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Framework.Network.Http
+namespace Framework.Network.Http.SmartHttp
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
+    public delegate void RequestEventHandler(SmartHttpContext context);
+
     /// <summary>
     /// Smart Http Service
     /// </summary>
@@ -45,9 +51,9 @@ namespace Framework.Network.Http
         private Int32 socketBacklogLength;
 
         /// <summary>
-        /// HttpProcessingDelegate
+        /// OnRequest
         /// </summary>
-        public HttpProcessingDelegate HttpProcessingDelegate { get; set; }
+        public event RequestEventHandler OnRequest;
 
         /// <summary>
         /// Async Listen
@@ -60,7 +66,7 @@ namespace Framework.Network.Http
             {
                 var client = socket.Accept();
 
-                var package = new ReceivePackage
+                var package = new SmartReceivePackage
                 {
                     Client = client,
                     Buffer = new Byte[1000]
@@ -76,21 +82,33 @@ namespace Framework.Network.Http
         /// <param name="result"></param>
         private void ReceiveRequest(IAsyncResult result)
         {
-            var receivePackage = result.AsyncState as ReceivePackage;
+            var receivePackage = result.AsyncState as SmartReceivePackage;
 
-            var receiveLength = receivePackage.Client.EndReceive(result);
+            var receiveLength = 0;
+
+            try
+            {
+                receiveLength = receivePackage.Client.EndReceive(result);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+
+                return;
+            }
 
             var request = encoding.GetString(receivePackage.Buffer, 0, receiveLength);
 
-            var httpProcessingDelegate = HttpProcessingDelegate;
+            var onRequest = OnRequest;
 
-            if (httpProcessingDelegate != null)
+            if (onRequest != null)
             {
-                // 解析HttpRequest
-                httpProcessingDelegate.BeginInvoke(new HttpContextAnalysis().GetHttpRequest(request), HttpProcessing, new HttpProcessingDelegatePackage
+                var httpContext = new HttpContextAnalysis().CreateSmartHttpContext(request);
+
+                onRequest.BeginInvoke(httpContext, OnRequestEvent, new SmartOnRequestPackage
                 {
                     Client = receivePackage.Client,
-                    HttpProcessingDelegate = httpProcessingDelegate
+                    HttpContext = httpContext
                 });
             }
             else
@@ -100,16 +118,14 @@ namespace Framework.Network.Http
         }
 
         /// <summary>
-        /// Http Processing
+        /// OnRequestEvent
         /// </summary>
         /// <param name="result"></param>
-        private void HttpProcessing(IAsyncResult result)
+        private void OnRequestEvent(IAsyncResult result)
         {
-            var package = result.AsyncState as HttpProcessingDelegatePackage;
+            var package = result.AsyncState as SmartOnRequestPackage;
 
-            var httpResponse = package.HttpProcessingDelegate.EndInvoke(result);
-
-            var response = encoding.GetBytes(httpResponse.ResponseContent);
+            var response = encoding.GetBytes(package.HttpContext.Response.ResponseContent);
 
             package.Client.BeginSend(response, 0, response.Length, SocketFlags.None, SendResponse, package.Client);
         }
@@ -123,26 +139,6 @@ namespace Framework.Network.Http
             var client = result.AsyncState as Socket;
 
             client.Dispose();
-        }
-
-        public class HttpProcessingDelegatePackage
-        {
-            /// <summary>
-            /// Client
-            /// </summary>
-            public Socket Client { get; set; }
-
-            /// <summary>
-            /// HttpProcessingDelegate
-            /// </summary>
-            public HttpProcessingDelegate HttpProcessingDelegate { get; set; }
-        }
-
-        public class ReceivePackage
-        {
-            public Socket Client { get; set; }
-
-            public Byte[] Buffer { get; set; }
         }
     }
 }

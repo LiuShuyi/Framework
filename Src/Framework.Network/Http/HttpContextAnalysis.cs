@@ -1,18 +1,35 @@
 ﻿using System;
 using System.Collections.Specialized;
+using Framework.Network.Http.SmartHttp;
 
 namespace Framework.Network.Http
 {
     public class HttpContextAnalysis
     {
         /// <summary>
+        /// Create SmartHttpContext
+        /// </summary>
+        /// <param name="httpRequest"></param>
+        /// <returns></returns>
+        public SmartHttpContext CreateSmartHttpContext(String httpRequest)
+        {
+            var smartHttpContext = new SmartHttpContext
+            {
+                Request = GetHttpRequest(httpRequest),
+                Response = new SmartHttpResponse()
+            };
+
+            return smartHttpContext;
+        }
+
+        /// <summary>
         /// GetHttpRequest
         /// </summary>
         /// <param name="httpRequest"></param>
         /// <returns></returns>
-        public HttpRequestInfo GetHttpRequest(String httpRequest)
+        public SmartHttpRequest GetHttpRequest(String httpRequest)
         {
-            var httpRequestInfo = new HttpRequestInfo();
+            var httpRequestInfo = new SmartHttpRequest();
 
             if (String.IsNullOrWhiteSpace(httpRequest))
             {

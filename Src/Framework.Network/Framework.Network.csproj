@@ -40,22 +40,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Http\HttpContextAnalysis.cs" />
-    <Compile Include="Http\HttpRequestInfo.cs" />
-    <Compile Include="Http\HttpResponseInfo.cs" />
+    <Compile Include="Http\SmartHttp\SmartHttpRequest.cs" />
+    <Compile Include="Http\SmartHttp\SmartHttpResponse.cs" />
     <Compile Include="Http\HttpWebResponse.cs" />
-    <Compile Include="Http\IHttpRequestProcessing.cs" />
-    <Compile Include="Http\SmartHttpService.cs" />
+    <Compile Include="Http\SmartHttp\SmartHttpContext.cs" />
+    <Compile Include="Http\SmartHttp\SmartHttpService.cs" />
+    <Compile Include="Http\SmartHttp\SmartOnRequestPackage.cs" />
+    <Compile Include="Http\SmartHttp\SmartReceivePackage.cs" />
     <Compile Include="NetworkHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Framework.Base\Framework.Base.csproj">
       <Project>{1389368a-5f8a-4f56-aa2f-3c7fcfd4bf18}</Project>
       <Name>Framework.Base</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Http\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

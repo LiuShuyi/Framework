@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Specialized;
 
-namespace Framework.Network.Http
+namespace Framework.Network.Http.SmartHttp
 {
     /// <summary>
-    /// Http Request
+    /// SmartHttpRequest
     /// </summary>
-    public class HttpRequestInfo
+    public class SmartHttpRequest
     {
         /// <summary>
         /// HttpMethod
