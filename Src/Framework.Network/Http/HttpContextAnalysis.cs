@@ -4,6 +4,9 @@ using Framework.Network.Http.SmartHttp;
 
 namespace Framework.Network.Http
 {
+    /// <summary>
+    /// HttpContextAnalysis
+    /// </summary>
     public class HttpContextAnalysis
     {
         /// <summary>
@@ -15,7 +18,7 @@ namespace Framework.Network.Http
         {
             var smartHttpContext = new SmartHttpContext
             {
-                Request = GetHttpRequest(httpRequest),
+                Request = CreateSmartHttpRequest(httpRequest),
                 Response = new SmartHttpResponse()
             };
 
@@ -27,7 +30,7 @@ namespace Framework.Network.Http
         /// </summary>
         /// <param name="httpRequest"></param>
         /// <returns></returns>
-        public SmartHttpRequest GetHttpRequest(String httpRequest)
+        private SmartHttpRequest CreateSmartHttpRequest(String httpRequest)
         {
             var httpRequestInfo = new SmartHttpRequest();
 
