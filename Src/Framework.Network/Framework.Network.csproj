@@ -42,7 +42,7 @@
     <Compile Include="Http\HttpContextAnalysis.cs" />
     <Compile Include="Http\SmartHttp\SmartHttpRequest.cs" />
     <Compile Include="Http\SmartHttp\SmartHttpResponse.cs" />
-    <Compile Include="Http\HttpWebResponse.cs" />
+    <Compile Include="Http\HttpWebRequester.cs" />
     <Compile Include="Http\SmartHttp\SmartHttpContext.cs" />
     <Compile Include="Http\SmartHttp\SmartHttpService.cs" />
     <Compile Include="Http\SmartHttp\SmartOnRequestPackage.cs" />
