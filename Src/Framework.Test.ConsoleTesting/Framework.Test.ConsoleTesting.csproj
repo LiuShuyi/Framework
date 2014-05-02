@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04EE4299-6138-44B0-8495-A8E45EE78598}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{B53BB283-15A1-4203-B9BD-7114544AF96D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Framework.Network</RootNamespace>
-    <AssemblyName>Framework.Network</AssemblyName>
+    <RootNamespace>Framework.Test.ConsoleTesting</RootNamespace>
+    <AssemblyName>Framework.Test.ConsoleTesting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,24 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Http\HttpContextAnalysis.cs" />
-    <Compile Include="Http\SmartHttp\SmartHttpRequest.cs" />
-    <Compile Include="Http\SmartHttp\SmartHttpRequestUrl.cs" />
-    <Compile Include="Http\SmartHttp\SmartHttpResponse.cs" />
-    <Compile Include="Http\HttpWebRequester.cs" />
-    <Compile Include="Http\SmartHttp\SmartHttpContext.cs" />
-    <Compile Include="Http\SmartHttp\SmartHttpService.cs" />
-    <Compile Include="Http\SmartHttp\SmartOnRequestPackage.cs" />
-    <Compile Include="Http\SmartHttp\SmartReceivePackage.cs" />
-    <Compile Include="NetworkHelper.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Framework.Base\Framework.Base.csproj">
       <Project>{1389368a-5f8a-4f56-aa2f-3c7fcfd4bf18}</Project>
       <Name>Framework.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework.Data\Framework.Data.csproj">
+      <Project>{a26d9e33-09c6-4545-b366-1b5dce465c1c}</Project>
+      <Name>Framework.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Network\Framework.Network.csproj">
+      <Project>{04ee4299-6138-44b0-8495-a8e45ee78598}</Project>
+      <Name>Framework.Network</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,7 +16,7 @@ namespace Framework.Network.Http.SmartHttp
         /// <summary>
         /// Request Url
         /// </summary>
-        public String Url { get; set; }
+        public SmartHttpRequestUrl Url { get; set; }
 
         /// <summary>
         /// QueryString

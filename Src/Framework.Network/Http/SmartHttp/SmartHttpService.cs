@@ -55,14 +55,15 @@ namespace Framework.Network.Http.SmartHttp
         /// </summary>
         public event RequestEventHandler OnRequest;
 
-        private String HttpHeader = @"
-HTTP/1.0200OK 
-Date:Mon,31Dec200104:25:57GMT 
-Server:Apache/1.3.14(Unix) 
-Content-type:text/html 
-Last-modified:Tue,17Apr200106:46:28GMT  
-Content-length:39725426 
-Content-range:bytes554554-40279979/40279980
+        /// <summary>
+        /// HttpHeader
+        /// </summary>
+        private const String HttpHeader =
+@"HTTP/1.1 200 OK
+MIME_Version:1.0
+Content_Type:text/html;charset=utf-8
+Connection: Keep-Alive
+Content-Length:{0}
 
 ";
 
@@ -136,7 +137,7 @@ Content-range:bytes554554-40279979/40279980
         {
             var package = result.AsyncState as SmartOnRequestPackage;
 
-            var response = encoding.GetBytes(HttpHeader + package.HttpContext.Response.ResponseContent);
+            var response = encoding.GetBytes(String.Format(HttpHeader, package.HttpContext.Response.ResponseContent.Length) + package.HttpContext.Response.ResponseContent);
 
             package.Client.BeginSend(response, 0, response.Length, SocketFlags.None, SendResponse, package.Client);
         }

@@ -39,22 +39,45 @@ namespace Framework.Network.Http
                 return httpRequestInfo;
             }
 
-            var requestHtmlSplit = httpRequest.Trim().Replace("\n", "").Split('\r');
+            // HttpHeader
+            var requestHeaderSplit = httpRequest.Trim().Replace("\n", "").Split('\r');
 
-            // Head解析
-            var requestHead = requestHtmlSplit[0].Split(' ');
+            #region HttpMethod Url QueryString
 
-            httpRequestInfo.HttpMethod = requestHead[0];
+            var headerHttpMethod = requestHeaderSplit[0].ToUpperInvariant().Split(' ');
+            var headerHost = requestHeaderSplit[1].ToUpperInvariant();
 
-            httpRequestInfo.Url = requestHead[1].StartsWith("/") ? requestHead[1] : "/" + requestHead[1];
 
+            // HttpMethod
+            httpRequestInfo.HttpMethod = headerHttpMethod[0];
+
+            // Url
+            httpRequestInfo.Url = new SmartHttpRequestUrl
+            {
+                Path = headerHttpMethod[1].StartsWith("/") ? headerHttpMethod[1] : "/" + headerHttpMethod[1],
+            };
+
+            var host = headerHost.Substring(5, headerHost.Length - 5).Trim().Split(':');
+
+            if (host.Length == 2)
+            {
+                httpRequestInfo.Url.Host = host[0];
+                httpRequestInfo.Url.Port = Int32.Parse(host[1]);
+            }
+            else if (host.Length == 1)
+            {
+                httpRequestInfo.Url.Host = host[0];
+                httpRequestInfo.Url.Port = 80;
+            }
+
+            // QueryString
             httpRequestInfo.QueryString = new NameValueCollection();
 
-            var queryIndex = httpRequestInfo.Url.IndexOf('?');
+            var queryIndex = httpRequestInfo.Url.Path.IndexOf('?');
 
-            if (queryIndex != -1 && (queryIndex != httpRequestInfo.Url.Length - 1))
+            if (queryIndex != -1 && (queryIndex != httpRequestInfo.Url.Path.Length - 1))
             {
-                var queryStringSplit = httpRequestInfo.Url.Substring(httpRequestInfo.Url.IndexOf('?') + 1).Split('&');
+                var queryStringSplit = httpRequestInfo.Url.Path.Substring(httpRequestInfo.Url.Path.IndexOf('?') + 1).Split('&');
 
                 foreach (var s in queryStringSplit)
                 {
@@ -66,6 +89,8 @@ namespace Framework.Network.Http
                     }
                 }
             }
+
+            #endregion
 
             return httpRequestInfo;
         }
