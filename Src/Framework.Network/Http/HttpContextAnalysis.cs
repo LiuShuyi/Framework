@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Linq;
 using Framework.Network.Http.SmartHttp;
 
 namespace Framework.Network.Http
@@ -40,12 +41,12 @@ namespace Framework.Network.Http
             }
 
             // HttpHeader
-            var requestHeaderSplit = httpRequest.Trim().Replace("\n", "").Split('\r');
+            var requestHeaderSplit = httpRequest.Trim().Replace("\n", "").Split('\r').ToList();
 
             #region HttpMethod Url QueryString
 
             var headerHttpMethod = requestHeaderSplit[0].ToUpperInvariant().Split(' ');
-            var headerHost = requestHeaderSplit[1].ToUpperInvariant();
+            var headerHost = requestHeaderSplit.Find((s => s.ToUpperInvariant().StartsWith("HOST"))).ToUpperInvariant();
 
 
             // HttpMethod
@@ -91,6 +92,7 @@ namespace Framework.Network.Http
             }
 
             #endregion
+
 
             return httpRequestInfo;
         }

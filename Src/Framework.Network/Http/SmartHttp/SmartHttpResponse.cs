@@ -24,7 +24,7 @@ namespace Framework.Network.Http.SmartHttp
         /// <summary>
         /// Clear
         /// </summary>
-        public void ClearContent()
+        public void Clear()
         {
             responseContent.Clear();
         }
@@ -32,7 +32,7 @@ namespace Framework.Network.Http.SmartHttp
         /// <summary>
         /// Write
         /// </summary>
-        public void WriteContent(String writeContent)
+        public void Write(String writeContent)
         {
             responseContent.Append(writeContent);
         }

@@ -25,11 +25,11 @@ namespace Framework.Test.ConsoleTesting
         private static void smartHttpService_OnRequest(SmartHttpContext context)
         {
             var abc = 0;
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 10000000; i++)
             {
                 abc++;
             }
-            context.Response.WriteContent(String.Format("<html><body><p>Hello {0}</p></body></html>", abc));
+            context.Response.Write(String.Format("<html><body><p>Hello {0} {1}</p></body></html>", abc, DateTime.Now));
         }
     }
 }
