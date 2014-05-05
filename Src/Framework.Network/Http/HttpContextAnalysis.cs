@@ -43,19 +43,18 @@ namespace Framework.Network.Http
             // HttpHeader
             var requestHeaderSplit = httpRequest.Trim().Replace("\n", "").Split('\r').ToList();
 
-            #region HttpMethod Url QueryString
+            #region HttpMethod Url
 
             var headerHttpMethod = requestHeaderSplit[0].ToUpperInvariant().Split(' ');
             var headerHost = requestHeaderSplit.Find((s => s.ToUpperInvariant().StartsWith("HOST"))).ToUpperInvariant();
-
-
+            
             // HttpMethod
             httpRequestInfo.HttpMethod = headerHttpMethod[0];
 
             // Url
             httpRequestInfo.Url = new SmartHttpRequestUrl
             {
-                Path = headerHttpMethod[1].StartsWith("/") ? headerHttpMethod[1] : "/" + headerHttpMethod[1],
+                FullPath = headerHttpMethod[1].StartsWith("/") ? headerHttpMethod[1] : "/" + headerHttpMethod[1],
             };
 
             var host = headerHost.Substring(5, headerHost.Length - 5).Trim().Split(':');
@@ -71,14 +70,17 @@ namespace Framework.Network.Http
                 httpRequestInfo.Url.Port = 80;
             }
 
-            // QueryString
+            #endregion
+
+            #region QueryString
+
             httpRequestInfo.QueryString = new NameValueCollection();
 
-            var queryIndex = httpRequestInfo.Url.Path.IndexOf('?');
+            var queryIndex = httpRequestInfo.Url.FullPath.IndexOf('?');
 
-            if (queryIndex != -1 && (queryIndex != httpRequestInfo.Url.Path.Length - 1))
+            if (queryIndex != -1 && (queryIndex != httpRequestInfo.Url.FullPath.Length - 1))
             {
-                var queryStringSplit = httpRequestInfo.Url.Path.Substring(httpRequestInfo.Url.Path.IndexOf('?') + 1).Split('&');
+                var queryStringSplit = httpRequestInfo.Url.FullPath.Substring(httpRequestInfo.Url.FullPath.IndexOf('?') + 1).Split('&');
 
                 foreach (var s in queryStringSplit)
                 {
@@ -92,7 +94,6 @@ namespace Framework.Network.Http
             }
 
             #endregion
-
 
             return httpRequestInfo;
         }

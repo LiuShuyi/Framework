@@ -13,7 +13,7 @@ namespace Framework.Network.Http.SmartHttp
         /// <summary>
         /// Full Path
         /// </summary>
-        public String Path { get; set; }
+        public String FullPath { get; set; }
 
         /// <summary>
         /// Port
@@ -24,5 +24,15 @@ namespace Framework.Network.Http.SmartHttp
         /// Host
         /// </summary>
         public String Host { get; set; }
+
+        /// <summary>
+        /// Controller
+        /// </summary>
+        public String Controller { get; set; }
+
+        /// <summary>
+        /// Action
+        /// </summary>
+        public String Action { get; set; }
     }
 }
