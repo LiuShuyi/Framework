@@ -43,11 +43,11 @@ namespace Framework.Network.Http
             // HttpHeader
             var requestHeaderSplit = httpRequest.Trim().Replace("\n", "").Split('\r').ToList();
 
-            #region HttpMethod Url
+            #region HttpMethod Url Controller Action
 
             var headerHttpMethod = requestHeaderSplit[0].ToUpperInvariant().Split(' ');
             var headerHost = requestHeaderSplit.Find((s => s.ToUpperInvariant().StartsWith("HOST"))).ToUpperInvariant();
-            
+
             // HttpMethod
             httpRequestInfo.HttpMethod = headerHttpMethod[0];
 
@@ -56,6 +56,22 @@ namespace Framework.Network.Http
             {
                 FullPath = headerHttpMethod[1].StartsWith("/") ? headerHttpMethod[1] : "/" + headerHttpMethod[1],
             };
+
+            var urlSplit = httpRequestInfo.Url.FullPath.Substring(1).Split('/');
+
+            if (urlSplit.Length == 2)
+            {
+                // Controller
+                httpRequestInfo.Url.Controller = urlSplit[0];
+
+                // Action
+                httpRequestInfo.Url.Action = urlSplit[1];
+            }
+            else if (urlSplit.Length == 1)
+            {
+                // Controller
+                httpRequestInfo.Url.Controller = urlSplit[0];
+            }
 
             var host = headerHost.Substring(5, headerHost.Length - 5).Trim().Split(':');
 

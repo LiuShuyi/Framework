@@ -56,16 +56,21 @@ namespace Framework.Network.Http.SmartHttp
         public event RequestEventHandler OnRequest;
 
         /// <summary>
-        /// HttpHeader
+        /// HttpHeader Success
         /// </summary>
         private const String HttpHeader =
-@"HTTP/1.1 200 OK
+@"HTTP/1.1 {0}
 MIME_Version:1.0
 Content_Type:text/html;charset=utf-8
 Connection: Keep-Alive
-Content-Length:{0}
+Content-Length:{1}
 
 ";
+
+        /// <summary>
+        /// HttpStatus:200 OK
+        /// </summary>
+        private const String HttpStatus200 = @"200 OK";
 
         /// <summary>
         /// Async Listen
@@ -125,7 +130,9 @@ Content-Length:{0}
             }
             else
             {
-                receivePackage.Client.Dispose();
+                var response = encoding.GetBytes(String.Format(HttpHeader, HttpStatus200, 0));
+
+                receivePackage.Client.BeginSend(response, 0, response.Length, SocketFlags.None, SendResponse, receivePackage.Client);
             }
         }
 
@@ -137,7 +144,7 @@ Content-Length:{0}
         {
             var package = result.AsyncState as SmartOnRequestPackage;
 
-            var response = encoding.GetBytes(String.Format(HttpHeader, package.HttpContext.Response.ResponseContent.Length) + package.HttpContext.Response.ResponseContent);
+            var response = encoding.GetBytes(String.Format(HttpHeader, HttpStatus200, package.HttpContext.Response.ResponseContent.Length) + package.HttpContext.Response.ResponseContent);
 
             package.Client.BeginSend(response, 0, response.Length, SocketFlags.None, SendResponse, package.Client);
         }
